@@ -21,7 +21,7 @@ model:
     name: LearnableTypeCond
     out_feat_dim: 128
     in_feat_dim: ${..backbone.out_feat_dim}
-    use_predictor: true
+    use_predictor: false
     disabled: false
   head:
     name: FlowRT_MLPRTJ

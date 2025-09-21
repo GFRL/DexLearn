@@ -85,7 +85,7 @@ DexLearn/output
 ```
 and then you can run the sampling command below:
 ```bash
-CUDA_VISIBLE_DEVICES=0 python -m dexlearn.sample -e dexonomy_shadow_nflow_cond
+CUDA_VISIBLE_DEVICES=0 python -m dexlearn.sample -e dexonomy_shadow_nflow_cond algo.model.grasp_type_emb.use_predictor=True
 ```
 Now we donot support the training of predictor for grasp type.
 
