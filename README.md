@@ -16,6 +16,7 @@ conda create -n dexlearn python=3.10
 conda activate dexlearn
 
 # pytorch
+conda install -c conda-forge mkl=2020.2 -y
 conda install pytorch==2.0.1 pytorch-cuda=11.7 -c pytorch -c nvidia 
 
 # pytorch3d
@@ -42,7 +43,12 @@ cd ...
 
 # dexlearn
 pip install -e .
+pip install numpy==1.26.4
+pip install hydra-core
 ```
+you may need to run the following command to avoid potential errors related to MKL such as `undefined symbol: iJIT_NotifyEvent`
+```
+conda install -c conda-forge mkl=2020.2 -y
 
 ## Getting Started
 1. **Prepare assets**. Download Dexonomy dataset from [Hugging Face](https://huggingface.co/datasets/JiayiChenPKU/Dexonomy). The folder should be organized as below:
@@ -70,6 +76,18 @@ Similarly, you can download BODex dataset from [Hugging Face](https://huggingfac
 CUDA_VISIBLE_DEVICES=0 python -m dexlearn.train exp_name=type1 algo=nflow data=dexonomy_shadow
 CUDA_VISIBLE_DEVICES=0 python -m dexlearn.sample -e dexonomy_shadow_nflow_type1       
 ```
+If you want to use our pre-trained models, please download the checkpoints from [Hugging Face](https://huggingface.co/datasets/JiayiChenPKU/Dexonomy) and put them in the `output` folder.
+```
+DexLearn/output
+|- dexonomy_shadow_nflow_cond
+|   |- .hydra
+|   |- ckpts
+```
+and then you can run the sampling command below:
+```bash
+CUDA_VISIBLE_DEVICES=0 python -m dexlearn.sample -e dexonomy_shadow_nflow_cond
+```
+Now we donot support the training of predictor for grasp type.
 
 3. **Evaluating in simulation**: Please see [DexGraspBench](https://github.com/JYChen18/DexGraspBench?tab=readme-ov-file#running)
 
