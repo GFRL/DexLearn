@@ -6,7 +6,7 @@ Learning-based grasp synthesis baselines (e.g., diffusion model and normalizing 
 ## TODO list
 
 - [x] Support BODex and Dexonomy datasets
-- [ ] Release grasp type classifier for Dexonomy
+- [x] Release grasp type classifier for Dexonomy
 
 ## Installation
 ```bash
