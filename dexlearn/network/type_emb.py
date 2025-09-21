@@ -28,10 +28,6 @@ class LearnableTypeCond(torch.nn.Module):
                 predicted_grasp_type = torch.argmax(predicted_grasp_prob, dim=1)
                 data["grasp_type_id"] = predicted_grasp_type
         if self.cfg.disabled:
-            return {
-                'type_feat': self.grasp_type_feat(data["grasp_type_id"] * 0),
-            }
+            return self.grasp_type_feat(data["grasp_type_id"] * 0),
         else:
-            return {
-                'type_feat': self.grasp_type_feat(data["grasp_type_id"]),
-            }
+            return self.grasp_type_feat(data["grasp_type_id"]),
