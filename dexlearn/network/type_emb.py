@@ -9,10 +9,10 @@ class LearnableTypeCond(torch.nn.Module):
         if cfg.use_predictor:
             self.predictor = ResidualNet(
                 in_features=cfg.in_feat_dim,
-                out_features=40,          # grasp type 数量
-                hidden_features=512,      # 每层 hidden dim，可以调成 1024
-                num_blocks=5,             # 残差层数
-                activation=torch.nn.ReLU()  # 也可以用 GELU
+                out_features=40,          
+                hidden_features=512,      
+                num_blocks=5,             
+                activation=torch.nn.ReLU()  
             )
         #using cross entropy loss
         self.predictor_loss = torch.nn.CrossEntropyLoss()
